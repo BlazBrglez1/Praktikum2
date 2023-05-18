@@ -1,12 +1,19 @@
+using System;
+using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace DesktopApp
 {
     public partial class Form1 : Form
     {
+        
+
         public Form1()
         {
             InitializeComponent();
+            fileSystemWatcher1.Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "pdftest");
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,6 +32,25 @@ namespace DesktopApp
                 }
 
             }
+        }
+
+        private void fileSystemWatcher1_Created(object sender, FileSystemEventArgs e)
+        {
+            fileSystemWatcher1.EnableRaisingEvents = false;
+
+            PdfSerialNumberSearch search = new PdfSerialNumberSearch();
+            List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
+
+            foreach (string serialNumber in serialNumbers)
+            {
+               
+                    listBoxKode.Items.Add(serialNumber);
+                
+            }
+            /*  PdfPrinter printer = new PdfPrinter();
+              printer.PrintAll(serialNumbers);
+            */
+
         }
     }
 }

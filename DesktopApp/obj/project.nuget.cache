@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bgsRS+X3je/kt7LfeLftTcRCM1r0yFLwRYtgv5uLZHTZG0U0dyIumuYcVC5gTHQrgrNEdTEfuzpiW1opddcv6Q==",
+  "dgSpecHash": "drPsalEbXfzdu2cmhvuhpaz3ABwMBwCnBdpbv4BZW7citx2Xkm5UeoVDhbF/lmDYhZ/sKgzOmj0Uu4PNx1a+5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matevž\\Desktop\\Praktikum2\\DesktopApp\\DesktopApp.csproj",
+  "projectFilePath": "C:\\Users\\Uporabnik\\Desktop\\faks\\2. letnik\\Praktikum2\\DesktopApp\\DesktopApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Matevž\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
-    "C:\\Users\\Matevž\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512"
+    "C:\\Users\\Uporabnik\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
+    "C:\\Users\\Uporabnik\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512"
   ],
   "logs": [
     {

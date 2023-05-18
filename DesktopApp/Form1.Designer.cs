@@ -30,11 +30,13 @@
         {
             button1 = new Button();
             listBoxKode = new ListBox();
+            fileSystemWatcher1 = new FileSystemWatcher();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(406, 256);
+            button1.Location = new Point(698, 400);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -46,10 +48,16 @@
             // 
             listBoxKode.FormattingEnabled = true;
             listBoxKode.ItemHeight = 15;
-            listBoxKode.Location = new Point(254, 169);
+            listBoxKode.Location = new Point(12, 12);
             listBoxKode.Name = "listBoxKode";
-            listBoxKode.Size = new Size(120, 94);
+            listBoxKode.Size = new Size(291, 214);
             listBoxKode.TabIndex = 1;
+            // 
+            // fileSystemWatcher1
+            // 
+            fileSystemWatcher1.EnableRaisingEvents = true;
+            fileSystemWatcher1.SynchronizingObject = this;
+            fileSystemWatcher1.Created += fileSystemWatcher1_Created;
             // 
             // Form1
             // 
@@ -60,6 +68,7 @@
             Controls.Add(button1);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
         }
 
@@ -67,5 +76,6 @@
 
         private Button button1;
         private ListBox listBoxKode;
+        private FileSystemWatcher fileSystemWatcher1;
     }
 }
