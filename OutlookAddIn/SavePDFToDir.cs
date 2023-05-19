@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,10 @@ namespace OutlookAddIn
         //Saves pdf to dir, checks if file already exists
         public bool SavePdf(Outlook.Attachment attachment)
         {
-            string path = "C:\\Users\\Matevž\\Desktop\\Praktikum2\\PdfFromAddIn\\" + attachment.FileName;            
-            
+            string parentdir = GetParentDirectory(AppDomain.CurrentDomain.BaseDirectory, 3);
+
+            string path = Path.Combine(parentdir, "DesktopApp", "pdftest", attachment.FileName);
+
             if (File.Exists(path))
             {
                 DialogResult result = MessageBox.Show($"Datoteka z imenom {attachment.FileName} že obstaja! Jo želite prepisati?", "Datoteka že obstaja", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -38,6 +41,23 @@ namespace OutlookAddIn
                 return true;
             }
             
+        }
+
+        static string GetParentDirectory(string directoryPath, int levels)
+        {
+            DirectoryInfo directory = new DirectoryInfo(directoryPath);
+
+            for (int i = 0; i < levels; i++)
+            {
+                if (directory.Parent == null)
+                {
+                    // Return null or throw an exception, depending on your requirement
+                    return null;
+                }
+                directory = directory.Parent;
+            }
+
+            return directory.FullName;
         }
     }
 }
