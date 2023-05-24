@@ -10,6 +10,12 @@ namespace DesktopApp
 {
     internal class PdfPrinter
     {
+
+
+        /*TODO:
+         * Iskanje pdfjev po serijski stevilki na zacetku imena pdf-ja
+         * 
+        */
         public void PrintAll(List<string> serialNumbers)
         {
             foreach (string serialNumber in serialNumbers)
@@ -17,8 +23,6 @@ namespace DesktopApp
 
                 string pdfFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "printpdf", serialNumber + ".pdf");
 
-
-                Debug.WriteLine("printam"); 
 
                 if (File.Exists(pdfFileName))
                 {
@@ -47,7 +51,6 @@ namespace DesktopApp
             p.StartInfo = psi;
             p.Start();
 
-            p.WaitForExit();
         }
 
     }
