@@ -10,45 +10,46 @@ namespace DesktopApp
 {
     internal class PdfPrinter
     {
-        public void PrintPdf(string filePath)
+        public void PrintAll(List<string> serialNumbers)
         {
-            // Replace "AcroRd32.exe" with the path to your Adobe Reader executable if necessary
-            string pdfReaderPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
-            string args = $"/s /o /h /p \"{filePath}\"";
-
-            ProcessStartInfo info = new ProcessStartInfo()
+            foreach (string serialNumber in serialNumbers)
             {
-                FileName = pdfReaderPath,
+
+                string pdfFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "printpdf", serialNumber + ".pdf");
+
+
+                Debug.WriteLine("printam"); 
+
+                if (File.Exists(pdfFileName))
+                {
+                    PrintPdf(pdfFileName);
+                }
+            }
+        }
+
+        private void PrintPdf(string pdfFileName)
+        {
+            string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
+
+            // Example command line argument for silent printing: /N /T PdfFile PrinterName DriverName PortName
+            // We're just going to use /N /T PdfFile to use the default printer
+            string args = $"/N /T \"{pdfFileName}\"";
+
+            ProcessStartInfo psi = new ProcessStartInfo()
+            {
+                FileName = acrobatPath,
                 Arguments = args,
-                UseShellExecute = false,
                 CreateNoWindow = true,
-                WindowStyle = ProcessWindowStyle.Hidden
+                WindowStyle = ProcessWindowStyle.Hidden,
             };
 
             Process p = new Process();
-            p.StartInfo = info;
+            p.StartInfo = psi;
             p.Start();
 
             p.WaitForExit();
         }
 
-        public void PrintAll(List<string> serialNumbers)
-        {
-            foreach (string serialNumber in serialNumbers)
-            {
-                string pdfName = $"{serialNumber}.pdf";
-                var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string printPdfDirectory = Path.Combine(baseDirectory, "printpdf");
-                string pdfPath = Path.Combine(printPdfDirectory, pdfName);  // specify the directory where your PDFs are
-                if (File.Exists(pdfPath))
-                {
-                    PrintPdf(pdfPath);
-                }
-                else
-                {
-                    // handle the case where the file does not exist
-                }
-            }
-        }
     }
 }
+
