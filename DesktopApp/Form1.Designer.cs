@@ -36,12 +36,14 @@
             button2 = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
+            pdfViewer1 = new Apitron.PDF.Controls.PDFViewer();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(12, 163);
+            button1.Location = new Point(21, 201);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -53,9 +55,9 @@
             // 
             listBoxKode.FormattingEnabled = true;
             listBoxKode.ItemHeight = 15;
-            listBoxKode.Location = new Point(12, 37);
+            listBoxKode.Location = new Point(21, 51);
             listBoxKode.Name = "listBoxKode";
-            listBoxKode.Size = new Size(117, 109);
+            listBoxKode.Size = new Size(197, 124);
             listBoxKode.TabIndex = 1;
             // 
             // fileSystemWatcher1
@@ -68,9 +70,9 @@
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
             listView1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            listView1.Location = new Point(292, 53);
+            listView1.Location = new Point(12, 335);
             listView1.Name = "listView1";
-            listView1.Size = new Size(416, 293);
+            listView1.Size = new Size(465, 163);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -82,7 +84,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(576, 21);
+            button2.Location = new Point(310, 300);
             button2.Name = "button2";
             button2.Size = new Size(100, 23);
             button2.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(403, 21);
+            textBox1.Location = new Point(123, 300);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(152, 23);
             textBox1.TabIndex = 5;
@@ -102,17 +104,40 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(292, 22);
+            label1.Location = new Point(12, 301);
             label1.Name = "label1";
             label1.Size = new Size(105, 18);
             label1.TabIndex = 6;
             label1.Text = "Iskanje načrtov:";
             // 
+            // pdfViewer1
+            // 
+            pdfViewer1.Document = null;
+            pdfViewer1.EnableSearch = true;
+            pdfViewer1.Location = new Point(494, 51);
+            pdfViewer1.Name = "pdfViewer1";
+            pdfViewer1.SearchHighlightColor = Color.FromArgb(128, 255, 255, 0);
+            pdfViewer1.Size = new Size(631, 698);
+            pdfViewer1.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(494, 20);
+            label2.Name = "label2";
+            label2.Size = new Size(271, 21);
+            label2.TabIndex = 8;
+            label2.Text = "PREGLED NATISNJENIH NAČRTOV:";
+            label2.UseWaitCursor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1161, 787);
+            Controls.Add(label2);
+            Controls.Add(pdfViewer1);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button2);
@@ -136,5 +161,7 @@
         private ColumnHeader columnHeader2;
         private Label label1;
         private TextBox textBox1;
+        private Apitron.PDF.Controls.PDFViewer pdfViewer1;
+        private Label label2;
     }
 }

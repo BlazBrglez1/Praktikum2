@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Apitron.PDF.Controls;
+using Apitron.PDF.Rasterizer;
 
 namespace DesktopApp
 {
@@ -57,14 +59,32 @@ namespace DesktopApp
                 listBoxKode.Items.Add(serialNumber);
             }
 
-
-
-
             PdfPrinter printer = new PdfPrinter();
-            printer.PrintAll(serialNumbers);
+            //printer.PrintAll(serialNumbers);
+
+           
+
+
+            if (File.Exists(e.FullPath))
+            {
+                // Load the PDF into the PdfViewer control
+                try
+                {
+
+                    FileStream fs = new FileStream(e.FullPath, FileMode.Open,FileAccess.Read);
+                    pdfViewer1.Document = new Document(fs);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            
 
 
         }
+
+
 
         //Dodajanje nacrta
 
