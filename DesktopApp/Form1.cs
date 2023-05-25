@@ -60,9 +60,9 @@ namespace DesktopApp
             }
 
             PdfPrinter printer = new PdfPrinter();
-            //printer.PrintAll(serialNumbers);
+            printer.PrintAll(serialNumbers);
 
-           
+
 
 
             if (File.Exists(e.FullPath))
@@ -71,7 +71,7 @@ namespace DesktopApp
                 try
                 {
 
-                    FileStream fs = new FileStream(e.FullPath, FileMode.Open,FileAccess.Read);
+                    FileStream fs = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read);
                     pdfViewer1.Document = new Document(fs);
                 }
                 catch (Exception ex)
@@ -79,7 +79,7 @@ namespace DesktopApp
                     MessageBox.Show(ex.Message);
                 }
             }
-            
+
 
 
         }
@@ -152,15 +152,5 @@ namespace DesktopApp
                 }
             }
         }
-
-
-
-
     }
-
-
-
-
-
-
 }

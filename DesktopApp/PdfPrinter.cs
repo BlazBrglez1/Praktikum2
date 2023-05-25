@@ -26,14 +26,29 @@ namespace DesktopApp
 
                 if (File.Exists(pdfFileName))
                 {
-                    PrintPdf(pdfFileName);
+
+                    EditPdf editPdfWatermark = new EditPdf();
+
+                    string watermarkedPdfPath = editPdfWatermark.addWatermarkToPDF(pdfFileName);
+
+                    PrintPdf(watermarkedPdfPath);
                 }
             }
+            
+            
+                PrinterSettings settings = new PrinterSettings();
+                foreach (string printerName in PrinterSettings.InstalledPrinters)
+                {
+                    Console.WriteLine(printerName);
+                }
+            
         }
 
         private void PrintPdf(string pdfFileName)
         {
             string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
+
+            string printerName = "EPSONAC97C2 (L3150 Series)";
 
             // Example command line argument for silent printing: /N /T PdfFile PrinterName DriverName PortName
             // We're just going to use /N /T PdfFile to use the default printer
