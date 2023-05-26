@@ -1,12 +1,6 @@
 ﻿using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace DesktopApp;
 
@@ -51,9 +45,9 @@ internal class PdfSerialNumberSearch
             }
             serialNumbers = CompareAndSave(serialFull, serialXX);
             return serialNumbers;
-            
+
         }
-        
+
 
     }
     public List<string> CompareAndSave(List<string> serialFull, List<string> serialXX)

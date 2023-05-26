@@ -16,7 +16,7 @@ namespace DesktopApp
          * Iskanje pdfjev po serijski stevilki na zacetku imena pdf-ja
          * 
         */
-        public void PrintAll(List<string> serialNumbers)
+        public void PrintAll(List<string> serialNumbers, string dateAndOrderNumber)
         {
             foreach (string serialNumber in serialNumbers)
             {
@@ -29,26 +29,21 @@ namespace DesktopApp
 
                     EditPdf editPdfWatermark = new EditPdf();
 
-                    string watermarkedPdfPath = editPdfWatermark.addWatermarkToPDF(pdfFileName);
+                    string watermarkedPdfPath = editPdfWatermark.AddWatermarkToPDF(pdfFileName, dateAndOrderNumber);
 
                     PrintPdf(watermarkedPdfPath);
                 }
-            }
-            
-            
-                PrinterSettings settings = new PrinterSettings();
-                foreach (string printerName in PrinterSettings.InstalledPrinters)
+                else
                 {
-                    Console.WriteLine(printerName);
+                    MessageBox.Show("Program ni našel načrta za serijsko število: " + serialNumber+". " +
+                        "Vstavite v program pdf načrta, ki se mu ime začne z zgornjo serijsko številko!");
                 }
-            
+            }            
         }
 
         private void PrintPdf(string pdfFileName)
         {
             string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
-
-            string printerName = "EPSONAC97C2 (L3150 Series)";
 
             // Example command line argument for silent printing: /N /T PdfFile PrinterName DriverName PortName
             // We're just going to use /N /T PdfFile to use the default printer

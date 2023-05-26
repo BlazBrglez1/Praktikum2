@@ -14,7 +14,7 @@ namespace DesktopApp
 {
     internal class EditPdf
     {
-        public string addWatermarkToPDF(string inputFilePath)
+        public string AddWatermarkToPDF(string inputFilePath, string dateAndOrderNumber)
         {
             string outputFilePath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N") + ".pdf");
 
@@ -41,7 +41,7 @@ namespace DesktopApp
                 content.SetColorFill(new BaseColor(0, 0, 139)); // Dark blue color
                 content.SetFontAndSize(baseFont, 18);
                 content.BeginText();
-                content.ShowTextAligned(Element.ALIGN_LEFT, "Watermark Text", 20, 30, 0); // Position of the watermark text
+                content.ShowTextAligned(Element.ALIGN_LEFT, dateAndOrderNumber, 20, 30, 0); // Position of the watermark text
                 content.EndText();
 
                 // Close the stamper

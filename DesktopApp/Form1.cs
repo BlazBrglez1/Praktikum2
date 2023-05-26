@@ -51,8 +51,15 @@ namespace DesktopApp
         {
             fileSystemWatcher1.EnableRaisingEvents = false;
 
+            listBoxKode.Items.Clear();
+
             PdfSerialNumberSearch search = new PdfSerialNumberSearch();
             List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
+
+            PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
+            string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);
+
+            MessageBox.Show(dateAndOrderNumber);
 
             foreach (string serialNumber in serialNumbers)
             {
@@ -60,7 +67,7 @@ namespace DesktopApp
             }
 
             PdfPrinter printer = new PdfPrinter();
-            printer.PrintAll(serialNumbers);
+            printer.PrintAll(serialNumbers, dateAndOrderNumber);
 
 
 
@@ -70,7 +77,6 @@ namespace DesktopApp
                 // Load the PDF into the PdfViewer control
                 try
                 {
-
                     FileStream fs = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read);
                     pdfViewer1.Document = new Document(fs);
                 }
