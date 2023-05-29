@@ -146,6 +146,7 @@
             Controls.Add(button1);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
             PerformLayout();

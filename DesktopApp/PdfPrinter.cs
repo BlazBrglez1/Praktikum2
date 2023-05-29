@@ -38,7 +38,7 @@ namespace DesktopApp
                     MessageBox.Show("Program ni našel načrta za serijsko število: " + serialNumber+". " +
                         "Vstavite v program pdf načrta, ki se mu ime začne z zgornjo serijsko številko!");
                 }
-            }            
+            }          
         }
 
         private void PrintPdf(string pdfFileName)
@@ -60,7 +60,7 @@ namespace DesktopApp
             Process p = new Process();
             p.StartInfo = psi;
             p.Start();
-
+            p.Close();
         }
 
     }
