@@ -1,9 +1,2 @@
-1. Postopek iskanja in tiskanja načrtov iz naročila
-2. Ali iz naročila potrebujemo vse kodice, ki se začnejo s S + slika(kako je z različnimi verzijami-XX na koncu)
-3. So naročila vedno poslana v pdf obliki(Se naročila razlikujejo(je v vseh naročilih potrebno najti samo kodico, ali kako drugače)?
-4. Načrt je v obliki .dwg, se da ta oblika direktno kopirati(če ne, imate pdf verzije načrtov?)
-5. Kopiranje iz klasičnega printera povezanega na računalnik na katerem bo program?
-6. Način dela:
-	- prenos naročila in vstavitev pdf-ja v aplikacijo
-	- klik na pdf na mailu in printanje(Outlook, Gmail, ???)
-7. Kako so shranjeni načrti(v mapah, poimenovanje map, poimenovanje datotek, verzije,...)
+1.Naredi path do adobe readera pri njih
+2.Printer ali je default ali po imenu

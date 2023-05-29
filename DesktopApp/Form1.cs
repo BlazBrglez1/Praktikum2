@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Apitron.PDF.Controls;
 using Apitron.PDF.Rasterizer;
+using System.Text;
 
 namespace DesktopApp
 {
@@ -29,20 +30,45 @@ namespace DesktopApp
             }
         }
 
+        //roèno nalaganje v programu
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                string pdfFilePath = dialog.FileName;
-                PdfSerialNumberSearch serach = new PdfSerialNumberSearch();
+                listBoxKode.Items.Clear();
+                pdfViewer1.Document = null;
 
-                List<string> serialNumbers = serach.SearchSerialNumbers(pdfFilePath);
+                PdfSerialNumberSearch search = new PdfSerialNumberSearch();
+                List<string> serialNumbers = search.SearchSerialNumbers(dialog.FileName);
+
+                PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
+                string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(dialog.FileName);
+
+                MessageBox.Show(dateAndOrderNumber);
 
                 foreach (string serialNumber in serialNumbers)
                 {
                     listBoxKode.Items.Add(serialNumber);
                 }
+
+                if (File.Exists(dialog.FileName))
+                {
+                    // Load the PDF into the PdfViewer control
+                    try
+                    {
+                        FileStream fs = new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read);
+                        pdfViewer1.Document = new Document(fs);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+
+                PdfPrinter printer = new PdfPrinter();
+                printer.PrintAll(serialNumbers, dateAndOrderNumber);
 
             }
         }
@@ -52,6 +78,7 @@ namespace DesktopApp
             fileSystemWatcher1.EnableRaisingEvents = false;
 
             listBoxKode.Items.Clear();
+            pdfViewer1.Document = null;
 
             PdfSerialNumberSearch search = new PdfSerialNumberSearch();
             List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
@@ -65,12 +92,6 @@ namespace DesktopApp
             {
                 listBoxKode.Items.Add(serialNumber);
             }
-
-            PdfPrinter printer = new PdfPrinter();
-            printer.PrintAll(serialNumbers, dateAndOrderNumber);
-
-
-
 
             if (File.Exists(e.FullPath))
             {
@@ -87,6 +108,10 @@ namespace DesktopApp
             }
 
 
+            PdfPrinter printer = new PdfPrinter();
+            printer.PrintAll(serialNumbers, dateAndOrderNumber);
+
+            fileSystemWatcher1.EnableRaisingEvents = true;
 
         }
 
@@ -155,6 +180,27 @@ namespace DesktopApp
                 if (fileName.Contains(filterText))
                 {
                     listView1.Items.Add(Path.GetFileName(pdfFile));
+                }
+            }
+        }
+
+        //ob zapiranju forme izbrisi obstojeèe datoteke(naroèilnice)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string currDir = AppDomain.CurrentDomain.BaseDirectory;
+            string? parentDir = Directory.GetParent(currDir)?.Parent?.Parent?.Parent?.FullName;
+            string? pathDelete = Path.Combine(parentDir, "pdftest");            
+
+            // Get all file paths in the directory
+            string[] filePaths = Directory.GetFiles(pathDelete);
+
+            foreach (string filePath in filePaths)
+            {
+                string fileExtension = Path.GetExtension(filePath);
+
+                if (fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    File.Delete(filePath);
                 }
             }
         }
