@@ -16,8 +16,11 @@ namespace DesktopApp
          * Iskanje pdfjev po serijski stevilki na zacetku imena pdf-ja
          * 
         */
-        public void PrintAll(List<string> serialNumbers, string dateAndOrderNumber)
+        public List<string> PrintAll(List<string> serialNumbers, string dateAndOrderNumber)
         {
+
+            List<string> kodeBrezNačrtov = new List<string>();
+
             foreach (string serialNumber in serialNumbers)
             {
 
@@ -35,10 +38,12 @@ namespace DesktopApp
                 }
                 else
                 {
+                    kodeBrezNačrtov.Add(serialNumber);
                     MessageBox.Show("Program ni našel načrta za serijsko število: " + serialNumber+". " +
                         "Vstavite v program pdf načrta, ki se mu ime začne z zgornjo serijsko številko!");
                 }
-            }          
+            }
+            return kodeBrezNačrtov;
         }
 
         private void PrintPdf(string pdfFileName)

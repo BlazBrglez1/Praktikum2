@@ -37,6 +37,7 @@ namespace DesktopApp
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 listBoxKode.Items.Clear();
+                listBoxBrez.Items.Clear();
                 pdfViewer1.Document = null;
 
                 PdfSerialNumberSearch search = new PdfSerialNumberSearch();
@@ -68,7 +69,12 @@ namespace DesktopApp
 
 
                 PdfPrinter printer = new PdfPrinter();
-                printer.PrintAll(serialNumbers, dateAndOrderNumber);
+                List<string> kodeBrezNaèrta = printer.PrintAll(serialNumbers, dateAndOrderNumber);
+
+                foreach (string kodaBrez in kodeBrezNaèrta)
+                {
+                    listBoxBrez.Items.Add(kodaBrez);
+                }
 
             }
         }
@@ -78,6 +84,7 @@ namespace DesktopApp
             fileSystemWatcher1.EnableRaisingEvents = false;
 
             listBoxKode.Items.Clear();
+            listBoxBrez.Items.Clear();
             pdfViewer1.Document = null;
 
             PdfSerialNumberSearch search = new PdfSerialNumberSearch();
@@ -109,7 +116,12 @@ namespace DesktopApp
 
 
             PdfPrinter printer = new PdfPrinter();
-            printer.PrintAll(serialNumbers, dateAndOrderNumber);
+            List<string> kodeBrezNaèrta = printer.PrintAll(serialNumbers, dateAndOrderNumber);
+
+            foreach (string kodaBrez in kodeBrezNaèrta)
+            {
+                listBoxBrez.Items.Add(kodaBrez);
+            }
 
             fileSystemWatcher1.EnableRaisingEvents = true;
 
@@ -184,12 +196,12 @@ namespace DesktopApp
             }
         }
 
-        //ob zapiranju forme izbrisi obstojeèe datoteke(naroèilnice)
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        //ob odpiranju forme izbrisi obstojeèe datoteke(naroèilnice)
+        private void Form1_Load(object sender, EventArgs e)
         {
             string currDir = AppDomain.CurrentDomain.BaseDirectory;
             string? parentDir = Directory.GetParent(currDir)?.Parent?.Parent?.Parent?.FullName;
-            string? pathDelete = Path.Combine(parentDir, "pdftest");            
+            string? pathDelete = Path.Combine(parentDir, "pdftest");
 
             // Get all file paths in the directory
             string[] filePaths = Directory.GetFiles(pathDelete);

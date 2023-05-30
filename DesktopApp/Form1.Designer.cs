@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
             fileSystemWatcher1 = new FileSystemWatcher();
             listView1 = new ListView();
@@ -318,9 +319,10 @@
             // 
             listBoxBrez.BackColor = Color.White;
             listBoxBrez.Dock = DockStyle.Fill;
-            listBoxBrez.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxBrez.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxBrez.ForeColor = Color.Crimson;
             listBoxBrez.FormattingEnabled = true;
-            listBoxBrez.ItemHeight = 20;
+            listBoxBrez.ItemHeight = 15;
             listBoxBrez.Location = new Point(278, 32);
             listBoxBrez.Name = "listBoxBrez";
             listBoxBrez.Size = new Size(306, 249);
@@ -386,9 +388,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1221, 773);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
-            FormClosing += Form1_FormClosing;
+            Text = "Tiskanje načrtov";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

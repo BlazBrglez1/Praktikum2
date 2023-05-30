@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>printerIcon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="printerIcon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Apitron.PDF.Controls" Version="1.0.170" />
