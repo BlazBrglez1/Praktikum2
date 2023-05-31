@@ -21,10 +21,17 @@ namespace DesktopApp
 
             List<string> kodeBrezNačrtov = new List<string>();
 
+            FileFinder filefinder = new FileFinder();
+
+
             foreach (string serialNumber in serialNumbers)
             {
+                
 
-                string pdfFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "printpdf", serialNumber + ".pdf");
+                string fileName = filefinder.FindFileName(serialNumber);
+
+
+                string pdfFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "printpdf", fileName + ".pdf");
 
 
                 if (File.Exists(pdfFileName))
@@ -34,7 +41,7 @@ namespace DesktopApp
 
                     string watermarkedPdfPath = editPdfWatermark.AddWatermarkToPDF(pdfFileName, dateAndOrderNumber);
 
-                    PrintPdf(watermarkedPdfPath);
+                   // PrintPdf(watermarkedPdfPath);
                 }
                 else
                 {
