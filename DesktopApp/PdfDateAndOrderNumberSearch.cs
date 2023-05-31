@@ -20,34 +20,34 @@ namespace DesktopApp
 
             using (PdfReader reader = new PdfReader(pdfFilePath))
             {
-                for (int i = 1; i <= reader.NumberOfPages; i++)
+                
+                
+                string text = PdfTextExtractor.GetTextFromPage(reader, 1);
+                string[] lines = text.Split('\n');
+
+                foreach (string line in lines)
                 {
-                    string text = PdfTextExtractor.GetTextFromPage(reader, i);
-                    string[] lines = text.Split('\n');
-
-                    foreach (string line in lines)
+                    string datePattern = @"Belegdatum:\s+(\d{2}\.\d{2}\.\d{2})";
+                    // Extract the date
+                    Match dateMatch = Regex.Match(line, datePattern);
+                    if (dateMatch.Success)
                     {
-                        string datePattern = @"Belegdatum:\s+(\d{2}\.\d{2}\.\d{2})";
-                        // Extract the date
-                        Match dateMatch = Regex.Match(line, datePattern);
-                        if (dateMatch.Success)
-                        {
-                            string date = dateMatch.Groups[1].Value;
-                            result += date + "\n";
-                            isDateFound = true;
-                        }
+                        string date = dateMatch.Groups[1].Value;
+                        result += date + "\n";
+                        isDateFound = true;
+                    }
 
-                        string orderNumberPattern = @"Bestellnr\.:\s+([A-Z]{2}\d{2}-\d{4})";
-                        // Extract the order number
-                        Match orderNumberMatch = Regex.Match(line, orderNumberPattern);
-                        if (orderNumberMatch.Success)
-                        {
-                            string orderNumber = orderNumberMatch.Groups[1].Value;
-                            result += orderNumber + "\n";
-                            isOrderNumberFound = true;
-                        }
+                    string orderNumberPattern = @"Bestellnr\.:\s+([A-Z]{2}\d{2}-\d{4})";
+                    // Extract the order number
+                    Match orderNumberMatch = Regex.Match(line, orderNumberPattern);
+                    if (orderNumberMatch.Success)
+                    {
+                        string orderNumber = orderNumberMatch.Groups[1].Value;
+                        result += orderNumber + "\n";
+                        isOrderNumberFound = true;
                     }
                 }
+                
             }
 
             if (!isDateFound || !isOrderNumberFound || string.IsNullOrEmpty(result))

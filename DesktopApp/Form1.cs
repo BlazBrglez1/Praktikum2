@@ -45,8 +45,7 @@ namespace DesktopApp
 
                 PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
                 string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(dialog.FileName);
-
-                MessageBox.Show(dateAndOrderNumber);
+                
 
                 foreach (string serialNumber in serialNumbers)
                 {
@@ -91,9 +90,7 @@ namespace DesktopApp
             List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
 
             PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
-            string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);
-
-            MessageBox.Show(dateAndOrderNumber);
+            string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);            
 
             foreach (string serialNumber in serialNumbers)
             {
