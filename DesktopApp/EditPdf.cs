@@ -25,23 +25,34 @@ namespace DesktopApp
             {
                 // Create font and set properties
                 BaseFont baseFont = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                Font font = new Font(baseFont, 15, Font.BOLD, BaseColor.BLUE);
+                Font font = new Font(baseFont, 18, Font.BOLD, BaseColor.BLUE);
 
                 // Get the content of the first page
                 PdfContentByte content = stamper.GetUnderContent(1);
 
-                // Set the transparent black box color
-                content.SetColorFill(new BaseColor(0, 0, 0, 128)); // Transparent black box (adjust opacity as needed)
+                // Add the rectangle with a black border
+                content.SetLineWidth(0.5f); // Set the border width
+                content.SetColorStroke(BaseColor.BLACK); // Set the border color
 
-                // Add the transparent black box
-                content.Rectangle(10, 10, 200, 40); // Position and dimensions of the box
-                content.Fill();
+                float rectWidth = 150;
+                float rectHeight = 40;
+                float rectX = 10;
+                float rectY = 5; // Adjust the Y position to move the watermark lower on the PDF
 
-                // Add the watermark text in dark blue color
-                content.SetColorFill(new BaseColor(0, 0, 139)); // Dark blue color
-                content.SetFontAndSize(baseFont, 18);
+                content.Rectangle(rectX, rectY, rectWidth, rectHeight); // Position and dimensions of the box
+                content.Stroke();
+
+                // Add the watermark text in black color
+                content.SetColorFill(BaseColor.BLACK); // Black color for text
+                content.SetFontAndSize(baseFont, 18); // Font size for "PREJETO"
+
+                float textX = rectX + rectWidth / 2;
+                float textY = rectY + rectHeight / 2 - 7;
+
                 content.BeginText();
-                content.ShowTextAligned(Element.ALIGN_LEFT, dateAndOrderNumber, 20, 30, 0); // Position of the watermark text
+                content.ShowTextAligned(Element.ALIGN_CENTER, "PREJETO", textX, textY + 10, 0); // Position of the "PREJETO" text
+                content.SetFontAndSize(baseFont, 12); // Decrease the font size for the dateAndOrderNumber
+                content.ShowTextAligned(Element.ALIGN_CENTER, dateAndOrderNumber, textX, textY - 12, 0); // Position of the second line
                 content.EndText();
 
                 // Close the stamper
@@ -50,6 +61,10 @@ namespace DesktopApp
 
             return outputFilePath;
         }
+
+
+
+
 
     }
 }
