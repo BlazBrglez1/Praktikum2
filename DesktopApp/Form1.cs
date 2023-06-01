@@ -209,7 +209,12 @@ namespace DesktopApp
 
                 if (fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
-                    File.Delete(filePath);
+                    try {
+                        File.Delete(filePath); 
+                    }catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
