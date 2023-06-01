@@ -10,9 +10,9 @@ internal class PdfSerialNumberSearch
     {
         List<string> serialNumbers = new List<string>();
 
-        List<string> serialFull = new List<string>();
+        HashSet<string> serialFull = new HashSet<string>();
 
-        List<string> serialXX = new List<string>();
+        HashSet<string> serialXX = new HashSet<string>();
 
         using (PdfReader reader = new PdfReader(pdfFilePath))
         {
@@ -50,7 +50,7 @@ internal class PdfSerialNumberSearch
 
 
     }
-    public List<string> CompareAndSave(List<string> serialFull, List<string> serialXX)
+    public List<string> CompareAndSave(HashSet<string> serialFull, HashSet<string> serialXX)
     {
         List<string> result = new List<string>();
 
