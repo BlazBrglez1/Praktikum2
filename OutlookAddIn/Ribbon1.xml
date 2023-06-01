@@ -2,7 +2,7 @@
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
 	<contextMenus>
 		<contextMenu idMso="ContextMenuAttachments">			
-				<button id="OutlookPushEmail" label="Print PDF" getImage="imageEmail_GetImage" onAction="PrintPdf_Click"/>
+				<button id="OutlookPushEmail" label="PRINTAJ NAČRTE" getImage="imageEmail_GetImage" onAction="PrintPdf_Click"/>
 		</contextMenu>
 	</contextMenus>
 </customUI>

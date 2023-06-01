@@ -54,6 +54,7 @@
             tableLayoutPanel8 = new TableLayoutPanel();
             panel1 = new Panel();
             label6 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -274,11 +275,13 @@
             tableLayoutPanel9.Controls.Add(label4, 1, 0);
             tableLayoutPanel9.Controls.Add(label3, 0, 0);
             tableLayoutPanel9.Controls.Add(listBoxBrez, 1, 1);
+            tableLayoutPanel9.Controls.Add(label7, 0, 2);
             tableLayoutPanel9.Location = new Point(3, 44);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
-            tableLayoutPanel9.RowCount = 2;
+            tableLayoutPanel9.RowCount = 3;
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Absolute, 255F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Absolute, 230F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
             tableLayoutPanel9.Size = new Size(587, 284);
             tableLayoutPanel9.TabIndex = 1;
             // 
@@ -287,9 +290,9 @@
             listBoxKode.Dock = DockStyle.Fill;
             listBoxKode.FormattingEnabled = true;
             listBoxKode.ItemHeight = 15;
-            listBoxKode.Location = new Point(3, 32);
+            listBoxKode.Location = new Point(3, 30);
             listBoxKode.Name = "listBoxKode";
-            listBoxKode.Size = new Size(269, 249);
+            listBoxKode.Size = new Size(269, 224);
             listBoxKode.TabIndex = 1;
             // 
             // label4
@@ -297,7 +300,7 @@
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(278, 9);
+            label4.Location = new Point(278, 7);
             label4.Name = "label4";
             label4.Size = new Size(201, 20);
             label4.TabIndex = 2;
@@ -308,7 +311,7 @@
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(3, 9);
+            label3.Location = new Point(3, 7);
             label3.Name = "label3";
             label3.Size = new Size(107, 20);
             label3.TabIndex = 1;
@@ -323,9 +326,9 @@
             listBoxBrez.ForeColor = Color.Crimson;
             listBoxBrez.FormattingEnabled = true;
             listBoxBrez.ItemHeight = 15;
-            listBoxBrez.Location = new Point(278, 32);
+            listBoxBrez.Location = new Point(278, 30);
             listBoxBrez.Name = "listBoxBrez";
-            listBoxBrez.Size = new Size(306, 249);
+            listBoxBrez.Size = new Size(306, 224);
             listBoxBrez.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -381,6 +384,18 @@
             label6.Size = new Size(236, 25);
             label6.TabIndex = 0;
             label6.Text = "TISKANJE NAČRTOV";
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.BackColor = SystemColors.Control;
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(3, 269);
+            label7.Name = "label7";
+            label7.Size = new Size(269, 15);
+            label7.TabIndex = 3;
+            label7.Text = "Preverite v naročilu, katerih kod program ni našel!";
             // 
             // Form1
             // 
@@ -438,5 +453,6 @@
         private Label label5;
         private Panel panel1;
         private Label label6;
+        private Label label7;
     }
 }
