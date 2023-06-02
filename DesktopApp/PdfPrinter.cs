@@ -11,13 +11,18 @@ namespace DesktopApp
     internal class PdfPrinter
     {
 
+        private string printerName;
 
-        /*TODO:
-         * Iskanje pdfjev po serijski stevilki na zacetku imena pdf-ja
-         * 
-        */
+        private string acrobatPath;
+
         public List<string> PrintAll(List<string> serialNumbers, string dateAndOrderNumber)
         {
+            ReadSettings readSettings = new ReadSettings();
+
+            Dictionary<string, string> settings = readSettings.ReadSettingsFromFile();
+
+            printerName = settings["printerName"];
+            acrobatPath = settings["acrobatPath"];
 
             List<string> kodeBrezNačrtov = new List<string>();
 
@@ -41,7 +46,7 @@ namespace DesktopApp
 
                     string watermarkedPdfPath = editPdfWatermark.AddWatermarkToPDF(pdfFileName, dateAndOrderNumber);
 
-                   //PrintPdf(watermarkedPdfPath);
+                   PrintPdf(watermarkedPdfPath);
                 }
                 else
                 {
@@ -55,9 +60,9 @@ namespace DesktopApp
 
         private void PrintPdf(string pdfFileName)
         {
-            string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
+            /*string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
 
-            string printerName = "EPSONAC97C2 (L3150 Series)";
+            string printerName = "EPSONAC97C2 (L3150 Series)";*/
 
             // Example command line argument for silent printing: /N /T PdfFile PrinterName DriverName PortName
             // We're just going to use /N /T PdfFile to use the default printer
@@ -65,7 +70,7 @@ namespace DesktopApp
 
             ProcessStartInfo psi = new ProcessStartInfo()
             {
-                FileName = acrobatPath,
+                FileName = @""+acrobatPath,
                 Arguments = args,
                 CreateNoWindow = true,
                 WindowStyle = ProcessWindowStyle.Hidden,

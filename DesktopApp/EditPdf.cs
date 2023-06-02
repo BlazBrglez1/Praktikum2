@@ -36,7 +36,7 @@ namespace DesktopApp
 
                 float rectWidth = 150;
                 float rectHeight = 40;
-                float rectX = 10;
+                float rectX = 5;
                 float rectY = 5; // Adjust the Y position to move the watermark lower on the PDF
 
                 content.Rectangle(rectX, rectY, rectWidth, rectHeight); // Position and dimensions of the box
