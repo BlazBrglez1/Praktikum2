@@ -28,6 +28,7 @@ TODO:
 		-posli liefertermin k printanju, tam pa v funkcijo za watermark
 		-naredi dodatni watermark, če liefertermin ni null
 	naj se na formi izpiše kolko kodic je našlo(da lahko on preveri kolko jih ni našlo v naročilu, in jih sam da printat)
+	v listBoxu dodaj da lahko nekak skopira ime izbrane kodice, da lahko pol v vieweru mu označi
 	.
 	.
 	.
