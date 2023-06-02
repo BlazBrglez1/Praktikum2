@@ -13,11 +13,12 @@ DONE:
 	desktopapp napiši naj pogleda kerih kodic ni našlo v naročilu
 	če sta med prebranimi kodami 2 isti kodi dodaj samo eno
 	polepšaj watermark na načrtu
+	settings.txt(KEY=VALUE za ime printera pa pot do adobe readera)
 	
 DOING:
 	preberi pdf in najdi kodice(mogoče kaj zbolšat še)
 	dodaj exceptione pri branjih datotek itd.(mogoče kaj zbolšat še)
-	settings.txt(KEY=VALUE za ime printera pa pot do adobe readera) -----To jaz zaj delam
+	
 			
 TODO:		
 	načrt za install(kaj vse rabimo, kere verzije)
