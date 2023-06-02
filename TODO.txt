@@ -1,0 +1,48 @@
+DONE:	
+	outlook addin
+	vzami pdf iz mape ko bo not
+	dodajanje datotek
+	preberi pdf in najdi datum in številko naročilo
+	editaj pdfje da doda datum in številko naročila v pdf
+	izgled polepsaj
+	izbrisi narocilo iz mape ko ga vzame
+	zbriši messagebox za datum pa serijsko
+	isci kodice v mapi načrtov
+	pridobi pdfje načrtov
+	polepšaj outlookaddin(ime gumba)
+	desktopapp napiši naj pogleda kerih kodic ni našlo v naročilu
+	če sta med prebranimi kodami 2 isti kodi dodaj samo eno
+	polepšaj watermark na načrtu
+	
+DOING:
+	preberi pdf in najdi kodice(mogoče kaj zbolšat še)
+	dodaj exceptione pri branjih datotek itd.(mogoče kaj zbolšat še)
+	settings.txt(KEY=VALUE za ime printera pa pot do adobe readera) -----To jaz zaj delam
+			
+TODO:		
+	načrt za install(kaj vse rabimo, kere verzije)
+	README dokument
+	liefertermin pri produkcijskih:
+		-prepoznaj katero naročilo je produkcijsko(v dok. samo 1x piše Produktionslager)
+		-vzami datume in ugotovi k kateri kodi pripadajo(najtežji del ker ne moreš tabele brat v pdf
+		-posli liefertermin k printanju, tam pa v funkcijo za watermark
+		-naredi dodatni watermark, če liefertermin ni null
+	naj se na formi izpiše kolko kodic je našlo(da lahko on preveri kolko jih ni našlo v naročilu, in jih sam da printat)
+	.
+	.
+	.
+	
+IDEJA:
+???naredi input, da on napiše not katere kode ni prepoznalo, te kode shrani v .txt datoteko, potem ko program išče kode gre pri vsaki vrstici tudi skozi vsako kodo v 
+tej datoteki(samo te je treba spreminjat tud iskanje po načrtih v mapi, ker je zaj nareto, da išče samo na te kode S1234567890)
+			
+	
+	
+	
+
+
+
+
+
+
+
