@@ -33,7 +33,7 @@ namespace DesktopApp
                     if (dateMatch.Success)
                     {
                         string date = dateMatch.Groups[1].Value;
-                        result += date + "\n";
+                        result += date + " ";
                         isDateFound = true;
                     }
 
@@ -43,7 +43,7 @@ namespace DesktopApp
                     if (orderNumberMatch.Success)
                     {
                         string orderNumber = orderNumberMatch.Groups[1].Value;
-                        result += orderNumber + "\n";
+                        result += orderNumber + " ";
                         isOrderNumberFound = true;
                     }
                 }

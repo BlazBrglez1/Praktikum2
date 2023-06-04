@@ -50,11 +50,13 @@
             label4 = new Label();
             label3 = new Label();
             listBoxBrez = new ListBox();
+            label7 = new Label();
             tableLayoutPanel7 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
+            tableLayoutPanel10 = new TableLayoutPanel();
+            button3 = new Button();
             panel1 = new Panel();
             label6 = new Label();
-            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -65,6 +67,7 @@
             tableLayoutPanel9.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,9 +96,9 @@
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
             listView1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            listView1.Location = new Point(3, 85);
+            listView1.Location = new Point(3, 108);
             listView1.Name = "listView1";
-            listView1.Size = new Size(587, 199);
+            listView1.Size = new Size(630, 258);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -103,16 +106,16 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Shranjeni načrti";
-            columnHeader2.Width = 300;
+            columnHeader2.Width = 587;
             // 
             // button2
             // 
-            button2.Anchor = AnchorStyles.None;
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button2.BackColor = SystemColors.ScrollBar;
             button2.Cursor = Cursors.Hand;
-            button2.Location = new Point(84, 293);
+            button2.Location = new Point(3, 3);
             button2.Name = "button2";
-            button2.Size = new Size(425, 52);
+            button2.Size = new Size(287, 36);
             button2.TabIndex = 3;
             button2.Text = "Dodaj načrt";
             button2.UseVisualStyleBackColor = false;
@@ -141,12 +144,14 @@
             // pdfViewer1
             // 
             pdfViewer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pdfViewer1.Cursor = Cursors.Default;
             pdfViewer1.Document = null;
             pdfViewer1.EnableSearch = true;
-            pdfViewer1.Location = new Point(4, 44);
+            pdfViewer1.Location = new Point(4, 48);
             pdfViewer1.Name = "pdfViewer1";
+            pdfViewer1.PageViewMode = Apitron.PDF.Controls.PageViewMode.FitWidth;
             pdfViewer1.SearchHighlightColor = Color.FromArgb(128, 255, 255, 0);
-            pdfViewer1.Size = new Size(594, 653);
+            pdfViewer1.Size = new Size(636, 774);
             pdfViewer1.TabIndex = 7;
             // 
             // label2
@@ -156,7 +161,7 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(4, 1);
             label2.Name = "label2";
-            label2.Size = new Size(594, 39);
+            label2.Size = new Size(636, 43);
             label2.TabIndex = 8;
             label2.Text = "PREGLED NAROČILA";
             label2.UseWaitCursor = true;
@@ -173,7 +178,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.84F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 92.16F));
-            tableLayoutPanel1.Size = new Size(1221, 773);
+            tableLayoutPanel1.Size = new Size(1306, 909);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // tableLayoutPanel2
@@ -184,11 +189,11 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel4, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 63);
+            tableLayoutPanel2.Location = new Point(3, 74);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1215, 707);
+            tableLayoutPanel2.Size = new Size(1300, 832);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -200,12 +205,12 @@
             tableLayoutPanel3.Controls.Add(label2, 0, 0);
             tableLayoutPanel3.Cursor = Cursors.No;
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(610, 3);
+            tableLayoutPanel3.Location = new Point(653, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 5.67107773F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 94.3289261F));
-            tableLayoutPanel3.Size = new Size(602, 701);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 5.285714F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 94.71429F));
+            tableLayoutPanel3.Size = new Size(644, 826);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -221,7 +226,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 48.7142868F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 51.2857132F));
-            tableLayoutPanel4.Size = new Size(601, 701);
+            tableLayoutPanel4.Size = new Size(644, 826);
             tableLayoutPanel4.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -236,7 +241,7 @@
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6766462F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 88.32336F));
-            tableLayoutPanel5.Size = new Size(593, 334);
+            tableLayoutPanel5.Size = new Size(636, 394);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -247,7 +252,7 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 415F));
             tableLayoutPanel6.Controls.Add(label5, 0, 0);
             tableLayoutPanel6.Controls.Add(button1, 1, 0);
-            tableLayoutPanel6.Location = new Point(3, 3);
+            tableLayoutPanel6.Location = new Point(3, 7);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -276,13 +281,13 @@
             tableLayoutPanel9.Controls.Add(label3, 0, 0);
             tableLayoutPanel9.Controls.Add(listBoxBrez, 1, 1);
             tableLayoutPanel9.Controls.Add(label7, 0, 2);
-            tableLayoutPanel9.Location = new Point(3, 44);
+            tableLayoutPanel9.Location = new Point(3, 78);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
             tableLayoutPanel9.RowCount = 3;
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Absolute, 230F));
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
-            tableLayoutPanel9.Size = new Size(587, 284);
+            tableLayoutPanel9.Size = new Size(630, 284);
             tableLayoutPanel9.TabIndex = 1;
             // 
             // listBoxKode
@@ -292,15 +297,16 @@
             listBoxKode.ItemHeight = 15;
             listBoxKode.Location = new Point(3, 30);
             listBoxKode.Name = "listBoxKode";
-            listBoxKode.Size = new Size(269, 224);
+            listBoxKode.Size = new Size(289, 224);
             listBoxKode.TabIndex = 1;
+            listBoxKode.KeyDown += listBoxKode_KeyDown;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(278, 7);
+            label4.Location = new Point(298, 7);
             label4.Name = "label4";
             label4.Size = new Size(201, 20);
             label4.TabIndex = 2;
@@ -326,26 +332,38 @@
             listBoxBrez.ForeColor = Color.Crimson;
             listBoxBrez.FormattingEnabled = true;
             listBoxBrez.ItemHeight = 15;
-            listBoxBrez.Location = new Point(278, 30);
+            listBoxBrez.Location = new Point(298, 30);
             listBoxBrez.Name = "listBoxBrez";
-            listBoxBrez.Size = new Size(306, 224);
+            listBoxBrez.Size = new Size(329, 224);
             listBoxBrez.TabIndex = 2;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.BackColor = SystemColors.Control;
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(3, 269);
+            label7.Name = "label7";
+            label7.Size = new Size(289, 15);
+            label7.TabIndex = 3;
+            label7.Text = "Preverite v naročilu, katerih kod program ni našel!";
             // 
             // tableLayoutPanel7
             // 
             tableLayoutPanel7.ColumnCount = 1;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Controls.Add(listView1, 0, 1);
             tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 0, 0);
-            tableLayoutPanel7.Controls.Add(button2, 0, 2);
+            tableLayoutPanel7.Controls.Add(listView1, 0, 1);
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel10, 0, 2);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(4, 345);
+            tableLayoutPanel7.Location = new Point(4, 405);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 3;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 28.5714283F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 71.42857F));
-            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
-            tableLayoutPanel7.Size = new Size(593, 352);
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
+            tableLayoutPanel7.Size = new Size(636, 417);
             tableLayoutPanel7.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -356,12 +374,39 @@
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 299F));
             tableLayoutPanel8.Controls.Add(textBox1, 1, 0);
             tableLayoutPanel8.Controls.Add(label1, 0, 0);
-            tableLayoutPanel8.Location = new Point(3, 40);
+            tableLayoutPanel8.Location = new Point(3, 63);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel8.Size = new Size(434, 39);
             tableLayoutPanel8.TabIndex = 4;
+            // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 2;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Controls.Add(button3, 1, 0);
+            tableLayoutPanel10.Controls.Add(button2, 0, 0);
+            tableLayoutPanel10.Location = new Point(3, 372);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 1;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Size = new Size(587, 42);
+            tableLayoutPanel10.TabIndex = 5;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button3.BackColor = Color.LightCoral;
+            button3.Cursor = Cursors.Hand;
+            button3.Location = new Point(296, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(288, 36);
+            button3.TabIndex = 4;
+            button3.Text = "Izbriši načrt";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel1
             // 
@@ -370,7 +415,7 @@
             panel1.Controls.Add(label6);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1215, 54);
+            panel1.Size = new Size(1300, 54);
             panel1.TabIndex = 1;
             // 
             // label6
@@ -379,29 +424,17 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(519, 10);
+            label6.Location = new Point(562, 10);
             label6.Name = "label6";
             label6.Size = new Size(236, 25);
             label6.TabIndex = 0;
             label6.Text = "TISKANJE NAČRTOV";
             // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.BackColor = SystemColors.Control;
-            label7.ForeColor = Color.Red;
-            label7.Location = new Point(3, 269);
-            label7.Name = "label7";
-            label7.Size = new Size(269, 15);
-            label7.TabIndex = 3;
-            label7.Text = "Preverite v naročilu, katerih kod program ni našel!";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1221, 773);
+            ClientSize = new Size(1306, 909);
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
@@ -421,6 +454,7 @@
             tableLayoutPanel7.ResumeLayout(false);
             tableLayoutPanel8.ResumeLayout(false);
             tableLayoutPanel8.PerformLayout();
+            tableLayoutPanel10.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -454,5 +488,7 @@
         private Panel panel1;
         private Label label6;
         private Label label7;
+        private TableLayoutPanel tableLayoutPanel10;
+        private Button button3;
     }
 }

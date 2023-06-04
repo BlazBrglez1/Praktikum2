@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Apitron.PDF.Controls;
 using Apitron.PDF.Rasterizer;
 using System.Text;
+using System.Linq;
+using com.itextpdf.text.pdf;
 
 namespace DesktopApp
 {
@@ -43,25 +45,26 @@ namespace DesktopApp
                 SearchProductionOrReserve searchProductionOrReserve = new SearchProductionOrReserve();
                 string productionOrReserve = searchProductionOrReserve.SearchProdOrRes(dialog.FileName);
 
-                if (productionOrReserve != null)
-                {
-                    //display
 
-                }
-                else
-                {
-                    MessageBox.Show("Naroèilnica ni 'Produktionslager' niti 'Ersatzteillager'! Program bo nadaljeval izvajanje.");
-                }
 
 
                 PdfSerialNumberSearch search = new PdfSerialNumberSearch();
                 List<string> serialNumbers = search.SearchSerialNumbers(dialog.FileName);
 
-                //Display number of serial numbers
+                label3.Text = "Najdene kode" + "(" + serialNumbers.Count + ")" + ":";
 
                 PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
                 string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(dialog.FileName);
 
+
+                if (productionOrReserve != null)
+                {
+                    label2.Text = "PREGLED NAROÈILA" + "(" + productionOrReserve + " " + dateAndOrderNumber + ")";
+                }
+                else
+                {
+                    MessageBox.Show("Naroèilnica ni 'Produktionslager' niti 'Ersatzteillager'! Program bo nadaljeval izvajanje.");
+                }
 
                 foreach (string serialNumber in serialNumbers)
                 {
@@ -105,7 +108,8 @@ namespace DesktopApp
             SearchProductionOrReserve searchProductionOrReserve = new SearchProductionOrReserve();
             string productionOrReserve = searchProductionOrReserve.SearchProdOrRes(e.FullPath);
 
-            if(productionOrReserve != null) {
+            if (productionOrReserve != null)
+            {
                 //display
 
             }
@@ -118,7 +122,7 @@ namespace DesktopApp
             List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
 
             //Display number of serial numbers 
-            
+
 
             PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
             string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);
@@ -240,12 +244,50 @@ namespace DesktopApp
 
                 if (fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
-                    try {
-                        File.Delete(filePath); 
-                    }catch (Exception ex)
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Iterate over the selected items in the ListView
+            foreach (ListViewItem selectedItem in listView1.SelectedItems)
+            {
+                // Get the full file path from the Tag property of the ListViewItem
+                string filePath = selectedItem.Tag.ToString();
+
+                try
+                {
+                    // Delete the file
+                    File.Delete(filePath);
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors that occur during deletion
+                    MessageBox.Show($"An error occurred while deleting the file {filePath}: {ex.Message}");
+                }
+            }
+
+            // Refresh the ListView to reflect the changes
+            RefreshListView();
+        }
+
+        private void listBoxKode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                if (listBoxKode.SelectedItem != null)
+                {
+                    string selectedText = listBoxKode.SelectedItem.ToString();
+                    Clipboard.SetText(selectedText);
                 }
             }
         }
