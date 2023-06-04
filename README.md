@@ -10,6 +10,7 @@ Rešitev je sestavljena iz dveh delov:
 
 ### **_Delovanje rešitve_**
 Uporabnik zažene Outlook aplikacijo s dodanim Add-inom in namizno aplikacijo preko .exe datoteke.
+
 Outlook addin:
 - Stranka prejme naročilnico na Outlook, kjer z desnim klikom na njo omogoči pošiljanje naročilnice v namizno aplikacijo.
 
