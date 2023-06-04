@@ -7,6 +7,7 @@ using Apitron.PDF.Rasterizer;
 using System.Text;
 using System.Linq;
 using com.itextpdf.text.pdf;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace DesktopApp
 {
@@ -81,7 +82,7 @@ namespace DesktopApp
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Pri prikazovanju naroèilnice {dialog.FileName} je prišlo do napake: {ex.Message}");
                     }
                 }
 
@@ -108,24 +109,23 @@ namespace DesktopApp
             SearchProductionOrReserve searchProductionOrReserve = new SearchProductionOrReserve();
             string productionOrReserve = searchProductionOrReserve.SearchProdOrRes(e.FullPath);
 
+            PdfSerialNumberSearch search = new PdfSerialNumberSearch();
+            List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
+
+            label3.Text = "Najdene kode" + "(" + serialNumbers.Count + ")" + ":";
+
+
+            PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
+            string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);
+
             if (productionOrReserve != null)
             {
-                //display
-
+                label2.Text = "PREGLED NAROÈILA" + "(" + productionOrReserve + " " + dateAndOrderNumber + ")";
             }
             else
             {
                 MessageBox.Show("Naroèilnica ni 'Produktionslager' niti 'Ersatzteillager'! Program bo nadaljeval izvajanje.");
             }
-
-            PdfSerialNumberSearch search = new PdfSerialNumberSearch();
-            List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
-
-            //Display number of serial numbers 
-
-
-            PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
-            string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);
 
             foreach (string serialNumber in serialNumbers)
             {
@@ -142,7 +142,7 @@ namespace DesktopApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Pri prikazovanju naroèilnice {e.FullPath} je prišlo do napake: {ex.Message}");
                 }
             }
 
@@ -250,7 +250,7 @@ namespace DesktopApp
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Ob brisanju datoteke {filePath} je prišlo do napake: {ex.Message}");
                     }
                 }
             }
@@ -261,8 +261,17 @@ namespace DesktopApp
             // Iterate over the selected items in the ListView
             foreach (ListViewItem selectedItem in listView1.SelectedItems)
             {
-                // Get the full file path from the Tag property of the ListViewItem
-                string filePath = selectedItem.Tag.ToString();
+                // Get the full file path from the Tag property of the
+                string filePath = null;
+                try
+                {
+                   filePath = selectedItem.Tag.ToString();
+                }
+                catch 
+                {
+                    MessageBox.Show("Novo vstavljene datoteke ni možno najti. Znova zaženite program in poskusite ponovno!");
+                }
+                
 
                 try
                 {
@@ -272,7 +281,7 @@ namespace DesktopApp
                 catch (Exception ex)
                 {
                     // Handle any errors that occur during deletion
-                    MessageBox.Show($"An error occurred while deleting the file {filePath}: {ex.Message}");
+                    MessageBox.Show($"Ob brisanju datoteke {filePath} je prišlo do napake: {ex.Message}");
                 }
             }
 
@@ -286,8 +295,16 @@ namespace DesktopApp
             {
                 if (listBoxKode.SelectedItem != null)
                 {
-                    string selectedText = listBoxKode.SelectedItem.ToString();
-                    Clipboard.SetText(selectedText);
+                    try
+                    {
+                        string selectedText = listBoxKode.SelectedItem.ToString();
+                        Clipboard.SetText(selectedText);
+                    }
+                    catch(Exception ex) 
+                    {
+                        MessageBox.Show("Kopiranje texta ni možno. Ponovno zaženite aplikacijo! Exception: "+ ex.Message);
+                    }
+                    
                 }
             }
         }

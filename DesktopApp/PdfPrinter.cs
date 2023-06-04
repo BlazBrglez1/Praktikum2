@@ -47,6 +47,7 @@ namespace DesktopApp
                     string watermarkedPdfPath = editPdfWatermark.AddWatermarkToPDF(pdfFileName, dateAndOrderNumber);
 
                     //PrintPdf(watermarkedPdfPath);
+                    //PrintPdf(watermarkedPdfPath);
                 }
                 else
                 {
@@ -60,10 +61,7 @@ namespace DesktopApp
 
         private void PrintPdf(string pdfFileName)
         {
-            /*string acrobatPath = @"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe";
-
-            string printerName = "EPSONAC97C2 (L3150 Series)";*/
-
+            try { 
             // Example command line argument for silent printing: /N /T PdfFile PrinterName DriverName PortName
             // We're just going to use /N /T PdfFile to use the default printer
             string args = $"/N /T \"{pdfFileName}\" \"{printerName}\"";
@@ -80,6 +78,11 @@ namespace DesktopApp
             p.StartInfo = psi;
             p.Start();
             p.CloseMainWindow();
+            }
+            catch
+            {
+                MessageBox.Show("Pri tiskanju načrta je šlo nekaj narobe");
+            }
         }
         
     }
