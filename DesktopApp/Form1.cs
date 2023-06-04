@@ -40,8 +40,24 @@ namespace DesktopApp
                 listBoxBrez.Items.Clear();
                 pdfViewer1.Document = null;
 
+                SearchProductionOrReserve searchProductionOrReserve = new SearchProductionOrReserve();
+                string productionOrReserve = searchProductionOrReserve.SearchProdOrRes(dialog.FileName);
+
+                if (productionOrReserve != null)
+                {
+                    //display
+
+                }
+                else
+                {
+                    MessageBox.Show("Naroèilnica ni 'Produktionslager' niti 'Ersatzteillager'! Program bo nadaljeval izvajanje.");
+                }
+
+
                 PdfSerialNumberSearch search = new PdfSerialNumberSearch();
                 List<string> serialNumbers = search.SearchSerialNumbers(dialog.FileName);
+
+                //Display number of serial numbers
 
                 PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
                 string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(dialog.FileName);
@@ -86,8 +102,23 @@ namespace DesktopApp
             listBoxBrez.Items.Clear();
             pdfViewer1.Document = null;
 
+            SearchProductionOrReserve searchProductionOrReserve = new SearchProductionOrReserve();
+            string productionOrReserve = searchProductionOrReserve.SearchProdOrRes(e.FullPath);
+
+            if(productionOrReserve != null) {
+                //display
+
+            }
+            else
+            {
+                MessageBox.Show("Naroèilnica ni 'Produktionslager' niti 'Ersatzteillager'! Program bo nadaljeval izvajanje.");
+            }
+
             PdfSerialNumberSearch search = new PdfSerialNumberSearch();
             List<string> serialNumbers = search.SearchSerialNumbers(e.FullPath);
+
+            //Display number of serial numbers 
+            
 
             PdfDateAndOrderNumberSearch dateAndNumSearch = new PdfDateAndOrderNumberSearch();
             string dateAndOrderNumber = dateAndNumSearch.SearchDateAndOrderNumber(e.FullPath);

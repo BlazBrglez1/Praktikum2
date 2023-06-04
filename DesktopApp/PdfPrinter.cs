@@ -46,7 +46,7 @@ namespace DesktopApp
 
                     string watermarkedPdfPath = editPdfWatermark.AddWatermarkToPDF(pdfFileName, dateAndOrderNumber);
 
-                   PrintPdf(watermarkedPdfPath);
+                    //PrintPdf(watermarkedPdfPath);
                 }
                 else
                 {
