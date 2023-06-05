@@ -14,6 +14,10 @@ DONE:
 	če sta med prebranimi kodami 2 isti kodi dodaj samo eno
 	polepšaj watermark na načrtu
 	settings.txt(KEY=VALUE za ime printera pa pot do adobe readera)
+	načrt za install(kaj vse rabimo, kere verzije)
+	README dokument
+	naj se na formi izpiše kolko kodic je našlo(da lahko on preveri kolko jih ni našlo v naročilu, in jih sam da printat)
+	v listBoxu dodaj da lahko nekak skopira ime izbrane kodice, da lahko pol v vieweru mu označi
 	
 DOING:
 	preberi pdf in najdi kodice(mogoče kaj zbolšat še)
@@ -21,15 +25,12 @@ DOING:
 	
 			
 TODO:		
-	načrt za install(kaj vse rabimo, kere verzije)
-	README dokument
+	
 	liefertermin pri produkcijskih:
 		-prepoznaj katero naročilo je produkcijsko(v dok. samo 1x piše Produktionslager)
 		-vzami datume in ugotovi k kateri kodi pripadajo(najtežji del ker ne moreš tabele brat v pdf
 		-posli liefertermin k printanju, tam pa v funkcijo za watermark
 		-naredi dodatni watermark, če liefertermin ni null
-	naj se na formi izpiše kolko kodic je našlo(da lahko on preveri kolko jih ni našlo v naročilu, in jih sam da printat)
-	v listBoxu dodaj da lahko nekak skopira ime izbrane kodice, da lahko pol v vieweru mu označi
 	.
 	.
 	.
