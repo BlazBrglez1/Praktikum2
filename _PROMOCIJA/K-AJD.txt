@@ -1,0 +1,34 @@
+K-AJD
+
+Izbor in tisk proizvodnih načrtov glede na naročilo stranke
+
+Leto izdelave: 2023
+
+Matevž Nerat
+Blaž Brglez
+Aljaž Bračko
+
+
+Koda: https://github.com/BlazBrglez1/Praktikum2
+
+Kategorizacija: namizna aplikacija
+
+Oznake: .Net, winforms, github, outlook
+
+V sklopu predmeta Praktikum2 v 2. letniku programa ITK na FERI smo v sodelovanju s
+Ključavničarstvom AJD razvili rešitev za težave s katerimi se soočajo na podjetju vsakodnevno.
+Glede na zahteve smo se odločili, da projekt ločimo na dve aplikaciji: namizno aplikacijo in Outlook
+Add-in. Outlook je platforma, kjer prejemajo naročila od stranke, zato se nam je add-in ponudil, kot
+najboljša rešitev za čim manj klikov na gumbe in prenosov datote. 
+Outlook Add-in ponuja dodaten gumb v meniju, ki se pokaže ob desnem kliku na naročilnico,
+ki je priponka v mailu. Ob kliku na gumb se priponka prenese v namizno aplikacijo, torej je
+funkcionalnost Add-ina prenos naročilnice v namizno aplikacijo.
+Namizna aplikacija prejme naročilnico od Outlook Add-ina, kjer jo prebere, prepozna serijske
+številke, najde načrte pripadajočim serijskim številkam, te načrte uredi z oznako( št. naročila in datum
+prejema) in nato natisne vsakega 2x. Aplikacija lahko prejme naročilnico preko ročnega vnosa, kjer so
+vsi nadaljnji koraki isti kot pri prejemu naročilnice od Outlook Add-ina. Naročilnica se uporabniku
+prikaže v pdf viewer-ju implementiranem v aplikacijo, sam viewer ponuja funkcionalnosti, kot so
+iskanje po ključni besedi, prilagajanje velikosti prikaza dokumenta in brskanje po straneh dokumenta.
+Aplikacija izpiše najdene serijske številke in število najdenih serijskih števil. V rdečem so izpisane
+serijske številke za katere program ni našel ujemajočega načrta. V tem primeru je uporabniku
+omogočeno dodajanje in brisanje pdf-ja načrta, kar preko uporabniškega vmesnika
