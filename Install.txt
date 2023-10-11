@@ -1,0 +1,8 @@
+1. Prenesi in preimenuj mapo in naredi bliznico in preimenuj
+2. Visual Studio(.NET Desktop Runtime 7.0.5, .NET Framework 4.8)
+3. Zaženi outlookaddin v visual studio
+4. Nastavi ime printera in pot do adobe readerja
+5. Zaženi outlook(če se pojava slow loading nastavi always enable in dont check for 30 days)-po 30 dnevih naj nastavijo sami, če se pojavi
+6. Zaženi namizno (daj testnega noter, da se sproba printanje)
+7. Preko outlooka probaj poslat enega
+8. Če imajo prirpravljene načrte v pdf, jih dodaj noter v mapo
