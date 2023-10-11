@@ -42,12 +42,19 @@ Za namestitev projekta so potrebni:
 - Outlook 2016+(Microsoft 365 ali Office verzija)
 - Windows 10+
 
+### **_Postopek namestitve_**
+Za namestitev si kloniramo git repository na lokalen računalnik.
+##### Namizna aplikacija
+Desktop aplikacijo lahko zaženemo brez dodatnih nastavitev, če izpolnjujemo specifikacije namestitve.
+##### Outlook Add-in
+Najlažja namstitev je z pomočjo Visual Studia, ki ob zagonu aplikacije nastavi vse potrebne parametre za delovanje add-ina. Nato odpremo Outlook, ki sam naloži add-in in ga lahko kar uporabljamo. 
+
 ### **_Razvoj_**
 Za razvoj smo izbrali okolje Visual Studio 2022. Uporabili smo 2 knjižnici za delo z pdf-ji in sicer [iTextSharp][PlIt] in [Apitron][PlAp]. Projekt smo začeli razvijati preko VSTO template-a in nato gradili po priporočilih dokumentacije.
 ##### Namizna aplikacija
 Za izgled namizne aplikacije smo uporabljali Visual Studio designer-ja, ki ponuja ročno sestavljanje namiznih aplikacij. Preko njega smo dodajali vnaprej definirane evente, ki so vezani na komponente izgleda aplikacije.
 
-##### Outlook add-in
+##### Outlook Add-in
 Outlook add-inu smo gumb dodali preko Ribbona(XML), ki je način spreminjanje izgleda Office aplikacij in se doda k originalnim komponentam office aplikacije. Do dokumenta dostopa preko office object-a Attachment.
 
 
