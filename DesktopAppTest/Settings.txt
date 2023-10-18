@@ -1,0 +1,2 @@
+printerName=EPSONAC97C2 (L3150 Series)
+acrobatPath=C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe
