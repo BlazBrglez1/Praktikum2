@@ -4,12 +4,27 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DesktopAppTest
 {
-    public class Tests
-    {
-         
-        [SetUp]
+    public class Tests { 
+
+
+        string directoryPath;
+        string directoryPathInstall;
+        string directoryPathDoc1;
+
+        [OneTimeSetUp]
         public void Setup()
         {
+            string currDir = AppDomain.CurrentDomain.BaseDirectory;
+            string? parentDir = Directory.GetParent(currDir)?.Parent?.Parent?.Parent?.Parent?.FullName;
+
+            string? pathInstall = Path.Combine(parentDir, "Install.txt");
+            directoryPathInstall = pathInstall;
+
+            string? pathNarocilnica = Path.Combine(parentDir, "document - 2023-04-27T142316.364.pdf");
+            directoryPath = pathNarocilnica;
+
+            string? pathDoc1 = Path.Combine(parentDir, "Doc1.pdf");
+            directoryPathDoc1 = pathDoc1;
         }
 
         [Test]
@@ -31,11 +46,9 @@ namespace DesktopAppTest
         {
             string expectedSearchRes = "Produktionslager";
 
-            string path = "C:\\Users\\Matevž\\Desktop\\FERI\\2.letnik\\2.semester\\Praktikum2\\document - 2023-04-27T142316.364.pdf";
-
             SearchProductionOrReserve search = new SearchProductionOrReserve();
 
-            Assert.That(expectedSearchRes, Is.EqualTo(search.SearchProdOrRes(path)));
+            Assert.That(expectedSearchRes, Is.EqualTo(search.SearchProdOrRes(directoryPath)));
         }
 
         [Test]
@@ -50,13 +63,9 @@ namespace DesktopAppTest
                 "S2020103100"
             };
 
-            string path = "C:\\Users\\Matevž\\Desktop\\FERI\\2.letnik\\2.semester\\Praktikum2\\document - 2023-04-27T142316.364.pdf";
-
             PdfSerialNumberSearch search = new PdfSerialNumberSearch();
 
-
-
-            Assert.That(expectedList, Is.EqualTo(search.SearchSerialNumbers(path)));
+            Assert.That(expectedList, Is.EqualTo(search.SearchSerialNumbers(directoryPath)));
         }
 
         [Test]
@@ -117,22 +126,18 @@ namespace DesktopAppTest
         {
             string expectedDateAndNumber = "BE23-1550 27.04.23 ";
 
-            string path = "C:\\Users\\Matevž\\Desktop\\FERI\\2.letnik\\2.semester\\Praktikum2\\document - 2023-04-27T142316.364.pdf";
-
             PdfDateAndOrderNumberSearch search = new PdfDateAndOrderNumberSearch();
 
-            Assert.That(expectedDateAndNumber ,Is.EqualTo(search.SearchDateAndOrderNumber(path)));
+            Assert.That(expectedDateAndNumber ,Is.EqualTo(search.SearchDateAndOrderNumber(directoryPath)));
         }
 
         [Test]
         public void PdfDateAndNumberNotFoundTest() {
             string expectedDateAndNumber = "";
 
-            string path = "C:\\Users\\Matevž\\Desktop\\FERI\\2.letnik\\2.semester\\Praktikum2\\Doc1.pdf";
-
             PdfDateAndOrderNumberSearch search = new PdfDateAndOrderNumberSearch();
 
-            Assert.That(expectedDateAndNumber, Is.EqualTo(search.SearchDateAndOrderNumber(path)));
+            Assert.That(expectedDateAndNumber, Is.EqualTo(search.SearchDateAndOrderNumber(directoryPathDoc1)));
         }
 
         [Test]
@@ -140,11 +145,9 @@ namespace DesktopAppTest
         {
             string mockDateAndNumber = "";
 
-            string path = "C:\\Users\\Matevž\\Desktop\\FERI\\2.letnik\\2.semester\\Praktikum2\\Install.txt";
-
             PdfDateAndOrderNumberSearch search = new PdfDateAndOrderNumberSearch();
 
-           Assert.Throws<iTextSharp.text.exceptions.InvalidPdfException>(() => search.SearchDateAndOrderNumber(path));
+           Assert.Throws<iTextSharp.text.exceptions.InvalidPdfException>(() => search.SearchDateAndOrderNumber(directoryPathInstall));
         }
 
         [Test]
